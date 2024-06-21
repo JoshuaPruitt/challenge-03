@@ -1,4 +1,5 @@
 
+var data = [{ }]
 
 // Get a reference to the #add-employees-btn element
 const addEmployeesBtn = document.querySelector('#add-employees-btn');
@@ -6,12 +7,14 @@ const addEmployeesBtn = document.querySelector('#add-employees-btn');
 // Collect employee data
 const collectEmployees = function () {
   // TODO: Get user input to create and return an array of employee objects
-  let person = prompt("Please enter your first and last name!")
+  let person = prompt("Please enter your first and last name!");
+  let empSal = prompt("Please enter your salary.")
+  let empName = text.split (" ");
   
-  if (person != null) {
-    document.getElementById("demo").innerHTML =
-    "Hello " + person + "! How are you today?";
-  }
+  let empInfo = [empName[0], empName[1], empSal]
+
+  document.getElementById("employee-table").innerHTML = empInfo[1];
+
 };
 
 // Display the average salary
