@@ -1,6 +1,12 @@
+ //define employee data
+ employeeData = {
+  firstName: [],
+  lastName: [],
+  salary: [],
+}
 
-//No. of employees tracker
-let empNo = 0;
+//track number of employees
+let empLength = 0;
 
 var empTable = document.getElementById('employee-table')
 
@@ -9,20 +15,15 @@ const addEmployeesBtn = document.querySelector("#add-employees-btn");
 
 // Collect employee data
 const collectEmployees = function () {
-  //define employee data
-  employeeData = {
-    firstName: "",
-    lastName: "",
-    salary: 0,
-  }
+ 
   
   // prompt for the users name
   let person = prompt("Please enter your first and last name!");
 
-  //take name and split to be a first name and a last name. Plug them into employee data table
+  //take name and split to be a first name and a last name. Push the 
   const fullname = person.split(" ", 2);
-  employeeData.firstName = fullname[0];
-  employeeData.lastName = fullname[1];
+  employeeData.firstName.push(fullname[0]);
+  employeeData.lastName.push(fullname[1]);
   
   // return the data from employee Data 
   return employeeData
@@ -33,17 +34,17 @@ const displayAverageSalary = function (employeesArray) {
   let row = document.createElement("tr")
 
   //prompt user for salary
-  employeesArray.salary = prompt("Please enter your salary.");
-  // employeesArray.salary = salary;
+  let salary = prompt("Please enter your salary.");
+  employeesArray.salary.push(salary);
 
   //take first name, last name, and salary and display them
-  let tabForm = '<td>' + employeesArray.firstName + '</td><td>' + employeesArray.lastName + '</td><td>' + "$" + employeesArray.salary + ".00" + '</td>';
+  let tabForm = '<td>' + employeesArray.firstName[empLength] + '</td><td>' + employeesArray.lastName[empLength] + '</td><td>' + "$" + employeesArray.salary[empLength] + ".00" + '</td>';
   row.innerHTML = tabForm;
   empTable.appendChild(row);
 
-  //add 1 to the employee tracker.
-  empNo++
-  console.log(empNo);
+  empLength++
+
+  return empLength
 };
 
 // Select a random employee. 
