@@ -4,6 +4,8 @@
   lastName: [],
   salary: [],
 }
+//redo for retun to adding employee
+let redo = true;
 
 //track number of employees
 let empLength = 0;
@@ -17,27 +19,35 @@ const addEmployeesBtn = document.querySelector("#add-employees-btn");
 const collectEmployees = function () {
   let row = document.createElement("tr")
   
-  // prompt for the users name
-  let person = prompt("Please enter your first and last name!");
+  while (redo == true){
+    // prompt for the users name
+    let person = prompt("Please enter your first and last name!");
 
-  //take name and split to be a first name and a last name. Push the 
-  const fullname = person.split(" ", 2);
-  employeeData.firstName.push(fullname[0]);
-  employeeData.lastName.push(fullname[1]);
+    //take name and split to be a first name and a last name. Push the 
+    const fullname = person.split(" ", 2);
+    employeeData.firstName.push(fullname[0]);
+    employeeData.lastName.push(fullname[1]);
 
+    //prompt user for salary
+    let salaryP = prompt("Please enter your salary.");
+    // let convSal = parseInt(salary)
+    employeeData.salary.push(parseInt(salaryP));
 
-  //prompt user for salary
-  let salaryP = prompt("Please enter your salary.");
-  // let convSal = parseInt(salary)
-  employeeData.salary.push(parseInt(salaryP));
+    //add 1 to emplength
+    empLength++
 
-  //take first name, last name, and salary and display them
-  let tabForm = '<td>' + employeeData.firstName[empLength] + '</td><td>' + employeeData.lastName[empLength] + '</td><td>' /*+ "$"*/ + employeeData.salary[empLength] + /*".00"*/ + '</td>';
-  row.innerHTML = tabForm;
-  empTable.appendChild(row);
+    redo = confirm("Would you like to log another employee?")
+  }
 
-  empLength++
+  for (x=0; x <= empLength; x++){
+    //take first name, last name, and salary and display them
+    let tabForm = '<td>' + employeeData.firstName[x] + '</td><td>' + employeeData.lastName[x] + '</td><td>' /*+ "$"*/ + employeeData.salary[x] + /*".00"*/ + '</td>';
+    row.innerHTML = tabForm;
+    empTable.appendChild(row);
 
+  }
+
+  console.log(employeeData);
   // return the data from employee Data 
   return employeeData, empLength
 };
