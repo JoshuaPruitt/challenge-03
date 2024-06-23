@@ -29,17 +29,17 @@ const collectEmployees = function () {
   //prompt user for salary
   let salaryP = prompt("Please enter your salary.");
   // let convSal = parseInt(salary)
-  employeesArray.salary.push(parseInt(salaryP));
+  employeeData.salary.push(parseInt(salaryP));
 
   //take first name, last name, and salary and display them
-  let tabForm = '<td>' + employeesArray.firstName[empLength] + '</td><td>' + employeesArray.lastName[empLength] + '</td><td>' /*+ "$"*/ + employeesArray.salary[empLength] + /*".00"*/ + '</td>';
+  let tabForm = '<td>' + employeeData.firstName[empLength] + '</td><td>' + employeeData.lastName[empLength] + '</td><td>' /*+ "$"*/ + employeeData.salary[empLength] + /*".00"*/ + '</td>';
   row.innerHTML = tabForm;
   empTable.appendChild(row);
 
   empLength++
 
   // return the data from employee Data 
-  return employeeData empLength
+  return employeeData, empLength
 };
 
 // Display the average salary
