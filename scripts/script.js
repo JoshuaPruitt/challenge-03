@@ -15,7 +15,7 @@ const addEmployeesBtn = document.querySelector("#add-employees-btn");
 
 // Collect employee data
 const collectEmployees = function () {
- 
+  let row = document.createElement("tr")
   
   // prompt for the users name
   let person = prompt("Please enter your first and last name!");
@@ -24,32 +24,32 @@ const collectEmployees = function () {
   const fullname = person.split(" ", 2);
   employeeData.firstName.push(fullname[0]);
   employeeData.lastName.push(fullname[1]);
-  
-  // return the data from employee Data 
-  return employeeData
-};
 
-// Display the average salary
-const displayAverageSalary = function (employeesArray) {
-  let row = document.createElement("tr")
 
   //prompt user for salary
-  let salary = prompt("Please enter your salary.");
-  employeesArray.salary.push(salary);
+  let salaryP = prompt("Please enter your salary.");
+  // let convSal = parseInt(salary)
+  employeesArray.salary.push(parseInt(salaryP));
 
   //take first name, last name, and salary and display them
-  let tabForm = '<td>' + employeesArray.firstName[empLength] + '</td><td>' + employeesArray.lastName[empLength] + '</td><td>' + "$" + employeesArray.salary[empLength] + ".00" + '</td>';
+  let tabForm = '<td>' + employeesArray.firstName[empLength] + '</td><td>' + employeesArray.lastName[empLength] + '</td><td>' /*+ "$"*/ + employeesArray.salary[empLength] + /*".00"*/ + '</td>';
   row.innerHTML = tabForm;
   empTable.appendChild(row);
 
   empLength++
 
-  return empLength
+  // return the data from employee Data 
+  return employeeData empLength
+};
+
+// Display the average salary
+const displayAverageSalary = function (employeesArray) {
+  
 };
 
 // Select a random employee. 
 const getRandomEmployee = function (employeesArray) {
-  // 
+  // get a random employee and give them a reward in the console
 };
 
 
