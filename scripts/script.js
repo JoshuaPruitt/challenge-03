@@ -19,6 +19,7 @@ const addEmployeesBtn = document.querySelector("#add-employees-btn");
 const collectEmployees = function () {
   let row = document.createElement("tr")
   
+  
   while (redo == true){
     // prompt for the users name
     let person = prompt("Please enter your first and last name!");
@@ -39,27 +40,35 @@ const collectEmployees = function () {
     redo = confirm("Would you like to log another employee?")
   }
 
-  for (x=0; x <= empLength; x++){
+  for (x=0; x <= employeeData.firstName.length; x++){
     //take first name, last name, and salary and display them
     let tabForm = '<td>' + employeeData.firstName[x] + '</td><td>' + employeeData.lastName[x] + '</td><td>' /*+ "$"*/ + employeeData.salary[x] + /*".00"*/ + '</td>';
     row.innerHTML = tabForm;
     empTable.appendChild(row);
 
-  }
+    displayEmployees(employeeData)
 
-  console.log(employeeData);
+  }
   // return the data from employee Data 
-  return employeeData, empLength
+  return employeeData
 };
 
 // Display the average salary
 const displayAverageSalary = function (employeesArray) {
-  
+  let sum = 0;
+  for (x = 0; x < employeeData.salary.length; x++){
+    sum += employeeData.salary[x]
+  }
+  let average = sum / employeeData.salary.length
+
+  console.log(`The average salary between our ${employeeData.firstName.length} employee(s) is ${average}`)
 };
 
 // Select a random employee. 
 const getRandomEmployee = function (employeesArray) {
   // get a random employee and give them a reward in the console
+  randomEmployee = Math.floor(Math.random() * empLength)
+  console.log(`Congrats ${employeeData.firstName[randomEmployee]} ${employeeData.lastName[randomEmployee]}! You have just won a one way ticket to the bahamas!`)
 };
 
 
@@ -72,6 +81,7 @@ const getRandomEmployee = function (employeesArray) {
 // Display employee data in an HTML table
 const displayEmployees = function (employeesArray) {
   // Get the employee table
+  console.log(employeesArray)
   const employeeTable = document.querySelector("#employee-table");
 
   // Clear the employee table
@@ -115,13 +125,13 @@ const trackEmployeeData = function () {
 
   getRandomEmployee(employees);
 
-  employees.sort(function (a, b) {
-    if (a.lastName < b.lastName) {
-      return -1;
-    } else {
-      return 1;
-    }
-  });
+  // employees.sort(function (a, b) {
+  //   if (a.lastName < b.lastName) {
+  //     return -1;
+  //   } else {
+  //     return 1;
+  //   }
+  // });
 
   displayEmployees(employees);
 };
