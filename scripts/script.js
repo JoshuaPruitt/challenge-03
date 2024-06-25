@@ -4,6 +4,7 @@
   lastName: [],
   salary: [],
 }
+
 //redo for retun to adding employee
 let redo = true;
 
@@ -38,17 +39,12 @@ const collectEmployees = function () {
     empLength++
 
     redo = confirm("Would you like to log another employee?")
-  }
-
-  for (x=0; x <= employeeData.firstName.length; x++){
-    //take first name, last name, and salary and display them
-    let tabForm = '<td>' + employeeData.firstName[x] + '</td><td>' + employeeData.lastName[x] + '</td><td>' /*+ "$"*/ + employeeData.salary[x] + /*".00"*/ + '</td>';
-    row.innerHTML = tabForm;
-    empTable.appendChild(row);
-
-    displayEmployees(employeeData)
 
   }
+
+  // reset redo so that the loop can run again when the button is pressed again.
+  redo = true;
+
   // return the data from employee Data 
   return employeeData
 };
@@ -81,29 +77,28 @@ const getRandomEmployee = function (employeesArray) {
 // Display employee data in an HTML table
 const displayEmployees = function (employeesArray) {
   // Get the employee table
-  console.log(employeesArray)
   const employeeTable = document.querySelector("#employee-table");
 
   // Clear the employee table
   employeeTable.innerHTML = "";
 
   // Loop through the employee data and create a row for each employee
-  for (let i = 0; i < employeesArray.length; i++) {
-    const currentEmployee = employeesArray[i];
+  for (let i = 0; i < employeesArray.firstName.length; i++) {
+    // const currentEmployee = employeesArray[i];
 
     const newTableRow = document.createElement("tr");
 
     const firstNameCell = document.createElement("td");
-    firstNameCell.textContent = currentEmployee.firstName;
+    firstNameCell.textContent = employeesArray.firstName[i];
     newTableRow.append(firstNameCell);
 
     const lastNameCell = document.createElement("td");
-    lastNameCell.textContent = currentEmployee.lastName;
+    lastNameCell.textContent = employeesArray.lastName[i];
     newTableRow.append(lastNameCell);
 
     const salaryCell = document.createElement("td");
     // Format the salary as currency
-    salaryCell.textContent = currentEmployee.salary.toLocaleString("en-US", {
+    salaryCell.textContent = employeesArray.salary[i].toLocaleString("en-US", {
       style: "currency",
       currency: "USD",
     });
@@ -116,7 +111,7 @@ const displayEmployees = function (employeesArray) {
 
 const trackEmployeeData = function () {
   const employees = collectEmployees();
-
+  
   console.table(employees);
 
   displayAverageSalary(employees);
@@ -125,15 +120,15 @@ const trackEmployeeData = function () {
 
   getRandomEmployee(employees);
 
-  // employees.sort(function (a, b) {
-  //   if (a.lastName < b.lastName) {
-  //     return -1;
-  //   } else {
-  //     return 1;
-  //   }
-  // });
+  employeeData.firstName.sort(function (a, b) {
+    if (this.lastName < this.lastName) {
+      return -1;
+    } else {
+      return 1;
+    }
+  });
 
-  displayEmployees(employees);
+  displayEmployees(employeeData);
 };
 
 // Add event listener to 'Add Employees' button
