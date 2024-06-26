@@ -52,6 +52,7 @@ const collectEmployees = function () {
 // Display the average salary
 const displayAverageSalary = function (employeesArray) {
   let sum = 0;
+  
   for (x = 0; x < employee.salary.length; x++){
     sum += employee.salary[x]
   }
@@ -67,9 +68,12 @@ const displayAverageSalary = function (employeesArray) {
 
 // Select a random employee. 
 const getRandomEmployee = function (employeesArray) {
+  let employeeFirstName = employee.firstName[randomEmployee];
+  let employeeLastName = employee.lastName[randomEmployee];
+
   // get a random employee and give them a reward in the console
   randomEmployee = Math.floor(Math.random() * empLength)
-  console.log(`Congrats ${employee.firstName[randomEmployee]} ${employee.lastName[randomEmployee]}! You have just won a one way ticket to the bahamas!`)
+  console.log(`Congrats ${employeeFirstName} ${employeeLastName}! You have just won a one way ticket to the bahamas!`)
 };
 
 
