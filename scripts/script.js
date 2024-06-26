@@ -1,5 +1,5 @@
- //define employee data
- employeeData = {
+//define employee data
+employee = { 
   firstName: [],
   lastName: [],
   salary: [],
@@ -27,13 +27,13 @@ const collectEmployees = function () {
 
     //take name and split to be a first name and a last name. Push the 
     const fullname = person.split(" ", 2);
-    employeeData.firstName.push(fullname[0]);
-    employeeData.lastName.push(fullname[1]);
+    employee.firstName.push(fullname[0]);
+    employee.lastName.push(fullname[1]);
 
     //prompt user for salary
     let salaryP = prompt("Please enter your salary.");
     // let convSal = parseInt(salary)
-    employeeData.salary.push(parseInt(salaryP));
+    employee.salary.push(parseInt(salaryP));
 
     //add 1 to emplength
     empLength++
@@ -46,25 +46,30 @@ const collectEmployees = function () {
   redo = true;
 
   // return the data from employee Data 
-  return employeeData
+  return employee
 };
 
 // Display the average salary
 const displayAverageSalary = function (employeesArray) {
   let sum = 0;
-  for (x = 0; x < employeeData.salary.length; x++){
-    sum += employeeData.salary[x]
+  for (x = 0; x < employee.salary.length; x++){
+    sum += employee.salary[x]
   }
-  let average = sum / employeeData.salary.length
+  let average = sum / employee.salary.length
+  //convert averge to usd with 2 decimal places
+  average = average.toLocaleString("en-US", {
+    style: "currency",
+    currency: "USD",
+  })
 
-  console.log(`The average salary between our ${employeeData.firstName.length} employee(s) is ${average}`)
+  console.log(`The average salary between our ${employee.firstName.length} employee(s) is ${average}`)
 };
 
 // Select a random employee. 
 const getRandomEmployee = function (employeesArray) {
   // get a random employee and give them a reward in the console
   randomEmployee = Math.floor(Math.random() * empLength)
-  console.log(`Congrats ${employeeData.firstName[randomEmployee]} ${employeeData.lastName[randomEmployee]}! You have just won a one way ticket to the bahamas!`)
+  console.log(`Congrats ${employee.firstName[randomEmployee]} ${employee.lastName[randomEmployee]}! You have just won a one way ticket to the bahamas!`)
 };
 
 
@@ -120,7 +125,7 @@ const trackEmployeeData = function () {
 
   getRandomEmployee(employees);
 
-  employeeData.firstName.sort(function (a, b) {
+  employee.firstName.sort(function (a, b) {
     if (this.lastName < this.lastName) {
       return -1;
     } else {
@@ -128,7 +133,7 @@ const trackEmployeeData = function () {
     }
   });
 
-  displayEmployees(employeeData);
+  displayEmployees(employee);
 };
 
 // Add event listener to 'Add Employees' button
