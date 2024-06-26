@@ -3,6 +3,9 @@
 ## Introduction
 Welcome to my challenge 03 site. This site was made to complete the 3rd week challenge for the coding bootcamp. Its an employee tracker made to help track employees, first name, last name, and salary.
 
+## Installation
+No installation required! To view the page in action simply click on this link <a href="https://joshuapruitt.github.io/challenge-03/">Employee Tracker Website</a>. That will take you to the deployed site. 
+
 ## Usage
 To use this site simply open the page. This automatically prompts the user for a full name and salary of an employee. After the prompt it will then ask if you would like to make another employee. This loops untill cancel is selected. Then the employees that were logged will be displayed in a list on the screen. If you want to add more employees you can hit the add employees button and start the loop again. 
 
